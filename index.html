@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Прайс-лист</title>
+<style>
+body{font-family:sans-serif;text-align:center;padding:60px 20px}
+a.btn{display:inline-block;margin-top:20px;padding:16px 28px;background:#e1306c;color:#fff;font-size:18px;border-radius:12px;text-decoration:none}
+</style>
+<script src="config.js"></script>
+</head>
+<body>
+<h2>Открываем прайс-лист…</h2>
+<p>Если ничего не произошло, нажмите кнопку:</p>
+<a id="go" class="btn" href="#">Открыть в Instagram</a>
+<script>
+document.getElementById('go').href = PRICE_URL;
+location.replace(PRICE_URL);
+</script>
+</body>
+</html>
