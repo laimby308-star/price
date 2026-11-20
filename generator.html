@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QR-генератор</title>
+<style>
+body{font-family:sans-serif;max-width:480px;margin:20px auto;padding:0 16px;text-align:center}
+input{width:100%;padding:10px;font-size:16px;box-sizing:border-box}
+button{margin-top:10px;padding:12px 20px;font-size:16px}
+#qr{margin:20px auto;display:flex;justify-content:center}
+#qr img{max-width:100%;height:auto}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+<h2>QR-генератор</h2>
+<input id="url" placeholder="https://username.github.io/price/">
+<button onclick="make()">Создать QR</button>
+<div id="qr"></div>
+<button id="dl" style="display:none" onclick="save()">Скачать PNG</button>
+<script>
+function make(){
+  var u = document.getElementById('url').value.trim();
+  if(!u) return;
+  var box = document.getElementById('qr');
+  box.innerHTML = '';
+  new QRCode(box, {text:u, width:1024, height:1024, correctLevel:QRCode.CorrectLevel.H});
+  document.getElementById('dl').style.display = 'inline-block';
+}
+function save(){
+  var c = document.querySelector('#qr canvas');
+  var a = document.createElement('a');
+  a.href = c.toDataURL('image/png');
+  a.download = 'qr-price.png';
+  a.click();
+}
+</script>
+</body>
+</html>
